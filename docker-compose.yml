@@ -81,7 +81,7 @@ services:
   gndb:
     depends_on: [ "libpostal_baseimage", "whosonfirst" ]
     build: gndb
-    container_name: venicegeo_geonamesmil
+    container_name: venicegeo_gndb
     networks: [ "pelias" ]
     volumes:
       - "./pelias.json:/code/pelias.json"
