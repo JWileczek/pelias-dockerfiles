@@ -50,7 +50,8 @@ services:
       - "${DATA_DIR}:/data"
   whosonfirst:
     depends_on: [ "libpostal_baseimage" ]
-    image: pelias/whosonfirst
+    # image: pelias/whosonfirst
+    build: whosonfirst
     container_name: pelias_whosonfirst
     networks: [ "pelias" ]
     volumes:
