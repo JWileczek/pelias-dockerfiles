@@ -11,7 +11,8 @@ services:
     container_name: pelias_libpostal_baseimage
     build: libpostal_baseimage
   schema:
-    image: pelias/schema
+    #image: pelias/schema
+    build: schema
     container_name: pelias_schema
     networks: [ "pelias" ]
     volumes:
@@ -137,7 +138,7 @@ services:
   elasticsearch:
     image: pelias/elasticsearch
     container_name: pelias_elasticsearch
-    build: elasticsearch/2.4
+    build: elasticsearch/5.2.1
     restart: always
     ports: [ "9200:9200", "9300:9300" ]
     networks: [ "pelias" ]
@@ -150,5 +151,5 @@ services:
       nofile:
         soft: 65536
         hard: 65536
-    mem_limit: 1g
+    mem_limit: 10g
     cap_add: [ "IPC_LOCK" ]

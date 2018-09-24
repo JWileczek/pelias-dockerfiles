@@ -1,11 +1,11 @@
 # see: https://www.elastic.co/guide/en/elasticsearch/reference/current/docker.html
 
 # base image
-FROM docker.elastic.co/elasticsearch/elasticsearch:5.2.1
+FROM docker.elastic.co/elasticsearch/elasticsearch:5.6.11
 USER root
 
 # environmental settings
-ENV ES_JAVA_OPTS '-Xms512m -Xmx512m'
+#ENV ES_JAVA_OPTS '-Xms512m -Xmx4096m'
 ENV xpack.security.enabled 'false'
 ENV xpack.monitoring.enabled 'false'
 ENV cluster.name 'pelias-dev'

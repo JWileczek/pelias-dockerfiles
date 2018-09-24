@@ -4,8 +4,18 @@
     "timestamp": false
   },
   "esclient": {
+    "apiVersion": "5.6",
+    "keepAlive": true,
+    "requestTimeout": "120000",
+    "batchSize": 1,
     "hosts": [{
-      "host": "elasticsearch"
+      "env": "pelias",
+      "host": "elasticsearch",
+      "port": 9200
+    }],
+    "log": [{
+      "type": "stdio",
+      "level": [ "error", "warning" ]
     }]
   },
   "elasticsearch": {
@@ -16,6 +26,9 @@
         "number_of_shards": "1"
       }
     }
+  },
+  "schema": {
+    "indexName": "pelias"
   },
   "api": {
     "textAnalyzer": "libpostal",
@@ -39,48 +52,33 @@
       "enabled": true
     },
     "geonames": {
-      "datapath": "/data/geonames",
-      "countryCode": "AF"
+      "datapath": "/data/geonames"
     },
     "gndb": {
-      "datapath": "/data/gndb",
-      "countryCode": "AF"
+      "datapath": "/data/gndb"
     },
     "openstreetmap": {
-      "download": [
-        {
-          "sourceURL": "https://s3.amazonaws.com/metro-extracts.nextzen.org/portland_oregon.osm.pbf"
-        }
-      ],
       "leveldbpath": "/tmp",
-      "datapath": "/data/openstreetmap",
-      "import": [{
-        "filename": "portland_oregon.osm.pbf"
-      }]
+      "datapath": "/data/openstreetmap"
     },
     "openaddresses": {
-      "datapath": "/data/openaddresses",
-      "files": [ "us/or/portland_metro.csv" ]
+      "datapath": "/data/openaddresses"
     },
     "polyline": {
-      "datapath": "/data/polylines",
-      "files": [ "extract.0sv" ]
+      "datapath": "/data/polylines"
     },
     "whosonfirst": {
       "datapath": "/data/whosonfirst",
       "importVenues": false,
-      "importPostalcodes": true,
-      "importPlace": "101715829"
+      "importPostalcodes": false,
+      "importPlace": "101715829",
+      "polygons": false,
+      "simplifyPolygons": false
     },
     "interpolation": {
       "download": {
         "tiger": {
-          "datapath": "/data/tiger",
-          "states": [
-            {
-              "state_code": 41
-            }
-          ]
+          "datapath": "/data/tiger"
         }
       }
     }
